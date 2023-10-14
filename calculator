@@ -1,7 +1,7 @@
 import random
 
 class Calculator:
-    def __init__(self):
+    def _init_(self):
         self.expression = ""
 
     def add(self, num1, num2):
@@ -87,5 +87,5 @@ def main():
         else:
             print("Invalid choice")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
