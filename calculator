@@ -1,0 +1,30 @@
+import random
+
+def generate_password(length, complexity):
+  password = ""
+
+  if complexity == "low":
+    characters = "abcdefghijklmnopqrstuvwxyz0123456789"
+  elif complexity == "medium":
+    characters = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  elif complexity == "high":
+    characters = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()"
+  else:
+    raise ValueError("Invalid complexity: {}".format(complexity))
+
+  for i in range(length):
+    password += random.choice(characters)
+
+  return password
+
+def main():
+  length = int(input("Enter the desired length of the password: "))
+
+  complexity = input("Enter the desired complexity of the password (low, medium, or high): ")
+
+  password = generate_password(length, complexity)
+
+  print("The generated password is: {}".format(password))
+
+if __name__ == "__main__":
+  main()
