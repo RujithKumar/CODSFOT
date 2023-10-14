@@ -1,0 +1,39 @@
+class ToDoList:
+  def __init__(self):
+    self.tasks = []
+
+  def add_task(self, task):
+    self.tasks.append(task)
+
+  def update_task(self, task_id, new_task):
+    self.tasks[task_id] = new_task
+
+  def delete_task(self, task_id):
+    self.tasks.pop(task_id)
+
+  def list_tasks(self):
+    for task in self.tasks:
+      print(task)
+
+def main():
+  todo_list = ToDoList()
+
+  while True:
+    command = input('>')
+    if command == 'add':
+      task = input('Enter task: ')
+      todo_list.add_task(task)
+    elif command == 'update':
+      task_id = int(input('Enter task ID: '))
+      new_task = input('Enter new task: ')
+      todo_list.update_task(task_id, new_task)
+    elif command == 'delete':
+      task_id = int(input('Enter task ID: '))
+      todo_list.delete_task(task_id)
+    elif command == 'list':
+      todo_list.list_tasks()
+    elif command == 'quit':
+      break
+
+if __name__ == '__main__':
+  main()
