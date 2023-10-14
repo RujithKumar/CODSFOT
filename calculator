@@ -1,30 +1,91 @@
 import random
 
-def generate_password(length, complexity):
-  password = ""
+class Calculator:
+    def __init__(self):
+        self.expression = ""
 
-  if complexity == "low":
-    characters = "abcdefghijklmnopqrstuvwxyz0123456789"
-  elif complexity == "medium":
-    characters = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  elif complexity == "high":
-    characters = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()"
-  else:
-    raise ValueError("Invalid complexity: {}".format(complexity))
+    def add(self, num1, num2):
+        return num1 + num2
 
-  for i in range(length):
-    password += random.choice(characters)
+    def subtract(self, num1, num2):
+        return num1 - num2
 
-  return password
+    def multiply(self, num1, num2):
+        return num1 * num2
+
+    def divide(self, num1, num2):
+        return num1 / num2
+
+    def evaluate(self):
+        try:
+            result = eval(self.expression)
+        except SyntaxError:
+            result = "Invalid expression"
+        return result
+
+    def random_number(self):
+        return random.randint(0, 100)
+
+    def clear(self):
+        self.expression = ""
 
 def main():
-  length = int(input("Enter the desired length of the password: "))
+    calculator = Calculator()
 
-  complexity = input("Enter the desired complexity of the password (low, medium, or high): ")
+    while True:
+        print("Calculator")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Random number")
+        print("6. Clear")
+        print("7. Evaluate")
+        print("8. Quit")
 
-  password = generate_password(length, complexity)
+        choice = int(input("Enter your choice: "))
 
-  print("The generated password is: {}".format(password))
+        if choice == 1:
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+            result = calculator.add(num1, num2)
+            print(f"{num1} + {num2} = {result}")
+
+        elif choice == 2:
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+            result = calculator.subtract(num1, num2)
+            print(f"{num1} - {num2} = {result}")
+
+        elif choice == 3:
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+            result = calculator.multiply(num1, num2)
+            print(f"{num1} * {num2} = {result}")
+
+        elif choice == 4:
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+            result = calculator.divide(num1, num2)
+            print(f"{num1} / {num2} = {result}")
+
+        elif choice == 5:
+            result = calculator.random_number()
+            print(f"Random number: {result}")
+
+        elif choice == 6:
+            calculator.clear()
+            print("Calculator cleared")
+
+        elif choice == 7:
+            result = calculator.evaluate()
+            print(f"Result: {result}")
+
+        elif choice == 8:
+            break
+
+        else:
+            print("Invalid choice")
 
 if __name__ == "__main__":
-  main()
+    main()
